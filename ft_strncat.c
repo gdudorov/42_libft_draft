@@ -1,32 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 16:21:12 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/02/28 20:14:24 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/02/27 20:39:37 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/02/28 00:24:40 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
 {
-	size_t	len;
+	int		i;
+	int		j;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while ((size_t)j < n)
+	{
+		s1[i] = s2[j];
+		i++;
+		j++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }
 
 #ifdef TEST
 
-int	main(void)
+int		main(void)
 {
-	printf("String len is: %zu\n", ft_strlen("Privet\200\201"));
+	char	s1[100];
+	char	s2[100];
+
+	strcpy(s1, "AB");
+	strcpy(s2, "CDEFGHI");
+	printf("   strcat is %s\n", strncat(s1, s2, 10));
+	strcpy(s1, "IH");
+	strcpy(s2, "GFEDCBA");
+	printf("ft_strcat is %s\n", ft_strncat(s1, s2, 10));
 	return (0);
 }
 #endif

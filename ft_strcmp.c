@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 16:21:12 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/02/28 20:14:24 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/02/25 22:30:41 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/02/25 22:46:18 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	len;
+	int	i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (s1[i] && s2[i] && (s1[i] == s2[i]))
+		i++;
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 }
 
 #ifdef TEST
 
 int	main(void)
 {
-	printf("String len is: %zu\n", ft_strlen("Privet\200\201"));
+	char	*s1;
+	char	*s2;
+
+	s1 = "AC\200\2009\0";
+	s2 = "AC\200\2009\200";
+	printf("ft_strcmp is %d\n", ft_strcmp(s1, s2));
+	printf("strcmp is %d\n", strcmp(s1, s2));
 	return (0);
 }
 #endif

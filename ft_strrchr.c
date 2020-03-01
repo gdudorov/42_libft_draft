@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 16:21:12 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/02/28 20:14:24 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/02/29 20:07:17 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/02/29 21:52:56 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	char	*tab;
+	size_t	len; 
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	len = strlen(s);
+	tab = (char *)s;
+	while (tab[len - 1] >= 0)
+		{
+		if (tab[len - 1] == (char)c)
+			return (tab + len - 1);
+		len--;
+	}
+	if (c)
+		return (NULL);
+	return (tab +len - 1);
 }
 
 #ifdef TEST
 
-int	main(void)
+int		main(void)
 {
-	printf("String len is: %zu\n", ft_strlen("Privet\200\201"));
+	printf("By    strRchr the pointer is, %s\n", strrchr("ABC05DF12345ABCDF77787", '5'));
+	printf("By FT_strRchr the pointer is, %s\n", ft_strrchr("ABC0DF12\0 345ABCDF77787", '3'));
 	return (0);
 }
 #endif
