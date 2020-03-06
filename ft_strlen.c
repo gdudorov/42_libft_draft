@@ -6,7 +6,7 @@
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:21:12 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/02/28 20:14:24 by gdudorov         ###   ########.fr       */
+/*   Updated: 2020/03/06 14:21:15 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 
 #ifdef TEST
 
-int	main(void)
+int		main(void)
 {
 	printf("String len is: %zu\n", ft_strlen("Privet\200\201"));
 	return (0);

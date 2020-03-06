@@ -1,49 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 20:39:37 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/03/06 14:52:08 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/03/01 00:21:32 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/03/06 14:09:37 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int		i;
 	int		j;
+	int		k;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	while (s2[j] && j < (int)n)
+	if (!(*needle))
+		return ((char *)haystack);
+	i = -1;
+	k = -1;
+	while (haystack[++i])
 	{
-		s1[i] = s2[j];
-		i++;
-		j++;
+		j = i;
+		while (needle[++k])
+		{
+			if (haystack[i++] != needle[k])
+			{
+				k = -1;
+				i = j;
+				break ;
+			}
+		}
+		if (k != -1)
+			break ;
 	}
-	s1[i] = '\0';
-	return (s1);
+	return ((k == -1) ? NULL : (char *)haystack + j);
 }
 
 #ifdef TEST
 
 int		main(void)
 {
-	char	s1[100];
-	char	s2[100];
-
-	strcpy(s1, "AB");
-	strcpy(s2, "CDEFGHI");
-	printf("   strcat is %s\n", strncat(s1, s2, 10));
-	strcpy(s1, "IH");
-	strcpy(s2, "GFEDCBA");
-	printf("ft_strcat is %s\n", ft_strncat(s1, s2, 10));
+	printf("By FT_strstr, %s\n", ft_strstr("MZIRIBMZPRIBMZPwww", "MZIRIBMZP"));
+	printf("By    strstr, %s\n", strstr("MZIRIBMZPRIBMZPwww", "MZIRIBMZP"));
 	return (0);
 }
 #endif
