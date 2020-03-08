@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 22:26:10 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/03/07 17:43:35 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/03/07 18:58:43 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/03/07 23:33:20 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	unsigned char	*tab;
+	size_t				i;
+	const unsigned char	*stab;
+	unsigned char		*dtab;
 
+	stab = src;
+	dtab = dst;
 	i = 0;
-	tab = s;
-	while (i < n)
+	if (len == 0)
+		return (dst);
+	if (dtab > stab)
 	{
-		tab[i] = '\0';
-		i++;
+		while (len--)
+			dtab[len] = stab[len];
 	}
-	return ;
+	else
+	{
+		while (i < len && (stab || dtab))
+		{
+			dtab[i] = stab[i];
+			i++;
+		}
+	}
+	return (dst);
 }

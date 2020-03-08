@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 22:26:10 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/03/07 17:43:35 by gdudorov         ###   ########.fr       */
+/*   Created: 2020/03/06 23:39:29 by gdudorov          #+#    #+#             */
+/*   Updated: 2020/03/06 23:48:03 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_toupper(int c)
 {
-	size_t			i;
-	unsigned char	*tab;
-
-	i = 0;
-	tab = s;
-	while (i < n)
-	{
-		tab[i] = '\0';
-		i++;
-	}
-	return ;
+	return ((c >= 97 && c <= 122) ? (c - 32) : c);
 }
