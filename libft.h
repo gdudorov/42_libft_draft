@@ -6,7 +6,7 @@
 /*   By: gdudorov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 22:08:00 by gdudorov          #+#    #+#             */
-/*   Updated: 2020/03/08 01:12:23 by gdudorov         ###   ########.fr       */
+/*   Updated: 2020/03/08 14:30:22 by gdudorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	*ft_memalloc(size_t size);
 #endif
